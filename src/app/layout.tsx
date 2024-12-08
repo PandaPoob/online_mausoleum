@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import { Bitter, Inter } from "next/font/google";
 import AuthProvider from "./_components/AuthProvider";
+import "./globals.css";
+import BaseLayout from "./_components/BaseLayout";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const bitter = Bitter({
+  subsets: ["latin"],
+  variable: "--display-font",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--body-font",
 });
 
 export const metadata: Metadata = {
@@ -25,11 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="da">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${bitter.variable} ${inter.variable} antialiased text-dark`}
       >
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <BaseLayout>{children}</BaseLayout>
+        </AuthProvider>
       </body>
     </html>
   );

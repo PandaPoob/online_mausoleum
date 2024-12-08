@@ -15,10 +15,12 @@ export default {
       xxl: "100rem", //1600px
     },
     colors: {
-      bg_black: "#0F0F0F",
-      primary: "#1F1F21",
-      secondary: "#8B9093",
-      white: "#E9E9E9",
+      dark: "#3B0505",
+    },
+
+    fontFamily: {
+      display: "var(--display-font)",
+      body: "var(--body-font)",
     },
   },
   plugins: [],
