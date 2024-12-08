@@ -15,7 +15,6 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async session({ session, token }) {
-      console.log("SESSION", session);
       // Attach the token to the session
       if (token.sub) {
         session.user.id = token.sub;

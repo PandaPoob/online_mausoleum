@@ -1,8 +1,8 @@
 function Memorials() {
   return (
-    <main>
+    <section>
       <h1 className="font-display text-4xl">Vores elskede & savnede</h1>
-    </main>
+    </section>
   );
 }
 

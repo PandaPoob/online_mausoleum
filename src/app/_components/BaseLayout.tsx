@@ -2,13 +2,13 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header>
-        <nav className="bg-white">
+        <nav>
           <ul>
             <li>Om Online Mausoleum</li>
           </ul>
         </nav>
       </header>
-      <main>{children}</main>
+      <main className="bg-white px-2">{children}</main>
     </>
   );
 }
