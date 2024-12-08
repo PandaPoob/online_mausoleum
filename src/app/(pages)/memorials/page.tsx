@@ -1,7 +1,7 @@
 import { Session, getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/app/_lib/auth";
 import Memorials from "@/app/_views/Memorials";
+import { authOptions } from "@/lib/auth";
 
 async function MemorialsPage() {
   const session = (await getServerSession(authOptions)) as Session;
