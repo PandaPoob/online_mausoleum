@@ -1,6 +1,6 @@
 import { User } from "next-auth";
 declare module "next-auth" {
-  interface User {
+  interface User extends User {
     email: string;
     name: string;
     image: string;
