@@ -1,7 +1,7 @@
 import { Memorial } from "@/app/_types/memorial";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET() {
   //const session = authenticateUser();
   /*   const session = await getServerSession(authOptions);
 
