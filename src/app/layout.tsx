@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Bitter, Inter } from "next/font/google";
+import { Bitter, Inter, Permanent_Marker } from "next/font/google";
 import AuthProvider from "./_components/AuthProvider";
 import "./globals.css";
 import BaseLayout from "./_components/BaseLayout";
 
 const bitter = Bitter({
   subsets: ["latin"],
-  variable: "--display-font",
+  variable: "--primary-font",
+});
+
+const permanent_marker = Permanent_Marker({
+  subsets: ["latin"],
+  variable: "--secondary-font",
+  weight: "400",
 });
 
 const inter = Inter({
@@ -17,6 +23,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Dem vi mindes",
   description: "Se billeder af dem vi har mistet",
+  icons: "/favicon.png",
 };
 
 export default function RootLayout({
@@ -27,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="da">
       <body
-        className={`${bitter.variable} ${inter.variable} antialiased text-dark`}
+        className={`${bitter.variable} ${permanent_marker.variable} ${inter.variable} antialiased text-dark`}
       >
         <AuthProvider>
           <BaseLayout>{children}</BaseLayout>

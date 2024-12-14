@@ -19,7 +19,8 @@ export default {
     },
 
     fontFamily: {
-      display: "var(--display-font)",
+      primary: "var(--primary-font)",
+      secondary: "var(--secondary-font)",
       body: "var(--body-font)",
     },
   },
