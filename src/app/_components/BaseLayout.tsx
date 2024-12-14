@@ -5,12 +5,18 @@ import logo from "../assets/icons/logo.png";
 function BaseLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <header className="">
-        <nav className="bg-white p-4 shadow-lg">
+      <header>
+        <nav className="bg-white p-3 shadow-lg">
           <ul className="flex items-center">
             <li>
               <Link href="/">
-                <Image src={logo} width={48} height={48} alt="Logo" />
+                <Image
+                  src={logo}
+                  width={40}
+                  height={40}
+                  alt="Logo"
+                  priority={true}
+                />
               </Link>
             </li>
             <li className="ml-auto">

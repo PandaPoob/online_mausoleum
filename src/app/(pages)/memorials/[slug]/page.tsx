@@ -1,10 +1,10 @@
+import { notFound } from "next/navigation";
 import { authenticateUser } from "@/app/utils/authSettings";
 import { IMemorial } from "@/app/_types/memorial";
-import Memorials from "@/app/_views/Memorials";
+import Memorial from "@/app/_views/Memorials/Memorial";
 
-async function getData() {
+async function getData(params: { slug: string }) {
   await authenticateUser();
-
   const memorials: IMemorial[] = [
     {
       id: 6,
@@ -83,13 +83,19 @@ async function getData() {
       },
     },
   ];
-  return memorials;
+  const { slug } = await params;
+
+  const memorial = memorials.find((m) => m.id === Number(slug));
+
+  if (!memorial) {
+    notFound();
+  }
+  return memorial;
 }
 
-async function MemorialsPage() {
-  const data = await getData();
-
-  return data && <Memorials memorials={data} />;
+async function MemorialPage({ params }: { params: { slug: string } }) {
+  const data = await getData(params);
+  return data && <Memorial />;
 }
 
-export default MemorialsPage;
+export default MemorialPage;

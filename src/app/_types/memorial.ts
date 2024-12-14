@@ -1,4 +1,4 @@
-export interface Memorial {
+export interface IMemorial {
   id: number;
   fullName: string;
   nickName?: string;
@@ -7,15 +7,20 @@ export interface Memorial {
   died: string;
   burial: string;
   imgUrl?: string;
-  photoSection?: PhotoSection[];
+  theme: ITheme;
+  photoSection?: IPhotoSection[];
 }
 
-export interface PhotoSection {
+export interface ITheme {
+  base: string;
+  accent: string;
+}
+export interface IPhotoSection {
   heading: string;
-  photos?: Photo[];
+  photos?: IPhoto[];
 }
 
-export interface Photo {
+export interface IPhoto {
   title: string;
   direction: "horizontal" | "vertical";
   url: string;
