@@ -5,7 +5,7 @@ import logo from "../assets/icons/logo.png";
 function BaseLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <header className="mb-20">
+      <header className="">
         <nav className="bg-white p-4 shadow-lg">
           <ul className="flex items-center">
             <li>
@@ -19,7 +19,9 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
           </ul>
         </nav>
       </header>
-      <main className="bg-white px-2 min-h-screen w-full">{children}</main>
+      <main className="font-body bg-lightYellow min-h-screen w-full px-2 py-20">
+        {children}
+      </main>
     </>
   );
 }

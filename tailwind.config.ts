@@ -15,7 +15,10 @@ export default {
       xxl: "100rem", //1600px
     },
     colors: {
+      black: "#000000",
+      white: "#FFFFFB",
       dark: "#3B0505",
+      lightYellow: "#F0E4D4",
     },
 
     fontFamily: {
