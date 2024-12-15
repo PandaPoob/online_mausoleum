@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Session } from "next-auth";
 import { authenticateUser } from "@/app/utils/authSettings";
 import { IMemorial } from "@/app/_types/memorial";
@@ -128,7 +128,8 @@ async function MemorialPage(props: { params: Params }) {
 
   const data = await getData(slug);
   if (!data) {
-    redirect("/");
+    console.log("no data", data);
+    //redirect("/");
   }
   const googleDriveData = await getGoogleDriveData(session, data.folderId);
 
