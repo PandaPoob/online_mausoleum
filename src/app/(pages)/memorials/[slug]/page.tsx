@@ -1,10 +1,10 @@
-//import { notFound } from "next/navigation";
-//import { Session } from "next-auth";
-//import { authenticateUser } from "@/app/utils/authSettings";
-//import { IMemorial } from "@/app/_types/memorial";
-//import Memorial from "@/app/_views/Memorials/Memorial";
+import { notFound, redirect } from "next/navigation";
+import { Session } from "next-auth";
+import { authenticateUser } from "@/app/utils/authSettings";
+import { IMemorial } from "@/app/_types/memorial";
+import Memorial from "@/app/_views/Memorials/Memorial";
 
-/* async function getData(slug: string) {
+async function getData(slug: string) {
   const memorials: IMemorial[] = [
     {
       id: 6,
@@ -119,25 +119,21 @@ async function getGoogleDriveData(session: Session, folderId: string) {
   } catch (error) {
     console.error(error);
   }
-} */
+}
 
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  console.log(params);
-  /*   const session = await authenticateUser();
+  const session = await authenticateUser();
   const slug = (await params).slug;
 
   const data = await getData(slug);
   if (!data) {
-    console.log("no data", data);
-    //redirect("/");
-  } */
-  //const googleDriveData = await getGoogleDriveData(session, data.folderId);
+    redirect("/");
+  }
+  const googleDriveData = await getGoogleDriveData(session, data.folderId);
 
-  return <div>hello</div>;
-  //<Memorial />;
-  //return googleDriveData && <Memorial />;
+  return googleDriveData && <Memorial />;
 }
