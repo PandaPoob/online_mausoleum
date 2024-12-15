@@ -120,11 +120,10 @@ async function getGoogleDriveData(session: Session, folderId: string) {
     console.error(error);
   }
 }
-type Params = Promise<{ slug: string }>;
 
-async function MemorialPage(props: { params: Params }) {
+async function MemorialPage({ params }: { params: Promise<{ slug: string }> }) {
   const session = await authenticateUser();
-  const { slug } = await props.params;
+  const { slug } = await params;
 
   const data = await getData(slug);
   if (!data) {
