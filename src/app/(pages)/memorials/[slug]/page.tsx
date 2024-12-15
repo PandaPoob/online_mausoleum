@@ -121,7 +121,11 @@ async function getGoogleDriveData(session: Session, folderId: string) {
   }
 }
 
-async function MemorialPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const session = await authenticateUser();
   const slug = (await params).slug;
 
@@ -134,5 +138,3 @@ async function MemorialPage({ params }: { params: Promise<{ slug: string }> }) {
 
   return googleDriveData && <Memorial />;
 }
-
-export default MemorialPage;
