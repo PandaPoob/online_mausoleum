@@ -18,6 +18,7 @@ async function getData() {
         base: "#FFD9A1",
         accent: "#FFB678",
       },
+      folderId: "1n139fxc_Gn-jEUAXve3yeCecZyVhvc2m",
     },
     {
       id: 5,
@@ -31,6 +32,7 @@ async function getData() {
         base: "#FFEBEF",
         accent: "#FECEDA",
       },
+      folderId: "1Rzozt8KMVToEckGsSGOx0Tq0dFF_TUSn",
     },
     {
       id: 4,
@@ -44,6 +46,7 @@ async function getData() {
         base: "#C7F5CD",
         accent: "#B5F2B5",
       },
+      folderId: "1NmCzDq1Wk_nkMMq-uvClxC0oP6GfUxaQ",
     },
     {
       id: 3,
@@ -57,6 +60,7 @@ async function getData() {
         base: "#FEFEB8",
         accent: "#FCF0A0",
       },
+      folderId: "11D0Y6FFIKvqH7tMbzWMFvbn6L9_IacuX",
     },
     {
       id: 2,
@@ -69,6 +73,7 @@ async function getData() {
         base: "#FED9D3",
         accent: "#FABBB6",
       },
+      folderId: "1k2QN5FBkz7ACidnQ_Id4cazG1Wv8PtYH",
     },
     {
       id: 1,
@@ -81,6 +86,7 @@ async function getData() {
         base: "#DBFBFF",
         accent: "#BDECF2",
       },
+      folderId: "1_aoztvcUpGWLgd-5Yj3laVQ6JOABKfRJ",
     },
   ];
   return memorials;

@@ -10,11 +10,18 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      issuer: process.env.NEXTAUTH_CLIENT_ISSUER,
+      authorization: {
+        params: {
+          scope:
+            "openid profile email https://www.googleapis.com/auth/drive.readonly", // Request only read-only access
+        },
+      },
     }),
   ],
 
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         return {
           ...token,
@@ -22,6 +29,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           image: user.image,
+          accessToken: account?.access_token,
         };
       }
       return token;
@@ -35,6 +43,7 @@ export const authOptions: NextAuthOptions = {
           email: token.email,
           name: token.name,
           image: token.picture,
+          accessToken: session.user.accessToken,
         },
         token,
       };

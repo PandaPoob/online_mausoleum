@@ -1,10 +1,12 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { Session } from "next-auth";
 import { authenticateUser } from "@/app/utils/authSettings";
 import { IMemorial } from "@/app/_types/memorial";
 import Memorial from "@/app/_views/Memorials/Memorial";
 
 async function getData(params: { slug: string }) {
-  await authenticateUser();
+  const { slug } = await params;
+
   const memorials: IMemorial[] = [
     {
       id: 6,
@@ -18,6 +20,7 @@ async function getData(params: { slug: string }) {
         base: "#FFD9A1",
         accent: "#FFB678",
       },
+      folderId: "1n139fxc_Gn-jEUAXve3yeCecZyVhvc2m",
     },
     {
       id: 5,
@@ -31,6 +34,7 @@ async function getData(params: { slug: string }) {
         base: "#FFEBEF",
         accent: "#FECEDA",
       },
+      folderId: "1Rzozt8KMVToEckGsSGOx0Tq0dFF_TUSn",
     },
     {
       id: 4,
@@ -44,6 +48,7 @@ async function getData(params: { slug: string }) {
         base: "#C7F5CD",
         accent: "#B5F2B5",
       },
+      folderId: "1NmCzDq1Wk_nkMMq-uvClxC0oP6GfUxaQ",
     },
     {
       id: 3,
@@ -57,6 +62,7 @@ async function getData(params: { slug: string }) {
         base: "#FEFEB8",
         accent: "#FCF0A0",
       },
+      folderId: "11D0Y6FFIKvqH7tMbzWMFvbn6L9_IacuX",
     },
     {
       id: 2,
@@ -69,6 +75,7 @@ async function getData(params: { slug: string }) {
         base: "#FED9D3",
         accent: "#FABBB6",
       },
+      folderId: "1k2QN5FBkz7ACidnQ_Id4cazG1Wv8PtYH",
     },
     {
       id: 1,
@@ -81,9 +88,9 @@ async function getData(params: { slug: string }) {
         base: "#DBFBFF",
         accent: "#BDECF2",
       },
+      folderId: "1_aoztvcUpGWLgd-5Yj3laVQ6JOABKfRJ",
     },
   ];
-  const { slug } = await params;
 
   const memorial = memorials.find((m) => m.id === Number(slug));
 
@@ -93,9 +100,38 @@ async function getData(params: { slug: string }) {
   return memorial;
 }
 
+async function getGoogleDriveData(session: Session, folderId: string) {
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/drive/v3/files?q='${folderId}' in parents`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${session.token.accessToken}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Error fetching files from Google Drive");
+    }
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function MemorialPage({ params }: { params: { slug: string } }) {
+  const session = await authenticateUser();
   const data = await getData(params);
-  return data && <Memorial />;
+  if (!data) {
+    redirect("/");
+  }
+  const googleDriveData = await getGoogleDriveData(session, data.folderId);
+
+  return googleDriveData && <Memorial />;
 }
 
 export default MemorialPage;

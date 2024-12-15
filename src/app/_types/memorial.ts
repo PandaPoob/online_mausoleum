@@ -8,6 +8,7 @@ export interface IMemorial {
   burial: string;
   imgUrl?: string;
   theme: ITheme;
+  folderId: string;
   photoSection?: IPhotoSection[];
 }
 
