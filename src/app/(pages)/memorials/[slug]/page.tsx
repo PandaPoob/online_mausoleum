@@ -2,7 +2,7 @@
 //import { Session } from "next-auth";
 //import { authenticateUser } from "@/app/utils/authSettings";
 //import { IMemorial } from "@/app/_types/memorial";
-import Memorial from "@/app/_views/Memorials/Memorial";
+//import Memorial from "@/app/_views/Memorials/Memorial";
 
 /* async function getData(slug: string) {
   const memorials: IMemorial[] = [
