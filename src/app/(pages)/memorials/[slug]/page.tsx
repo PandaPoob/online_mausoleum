@@ -1,3 +1,4 @@
+"use server";
 //import { notFound } from "next/navigation";
 //import { Session } from "next-auth";
 //import { authenticateUser } from "@/app/utils/authSettings";
