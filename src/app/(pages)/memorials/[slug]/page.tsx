@@ -126,7 +126,6 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  "use server";
   console.log(params);
   /*   const session = await authenticateUser();
   const slug = (await params).slug;
@@ -138,6 +137,7 @@ export default async function Page({
   } */
   //const googleDriveData = await getGoogleDriveData(session, data.folderId);
 
-  return <Memorial />;
+  return <div>hello</div>;
+  //<Memorial />;
   //return googleDriveData && <Memorial />;
 }
