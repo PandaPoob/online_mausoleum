@@ -4,9 +4,7 @@ import { authenticateUser } from "@/app/utils/authSettings";
 import { IMemorial } from "@/app/_types/memorial";
 import Memorial from "@/app/_views/Memorials/Memorial";
 
-async function getData(params: { slug: string }) {
-  const { slug } = await params;
-
+async function getData(slug: string) {
   const memorials: IMemorial[] = [
     {
       id: 6,
@@ -122,10 +120,13 @@ async function getGoogleDriveData(session: Session, folderId: string) {
     console.error(error);
   }
 }
+type Params = Promise<{ slug: string }>;
 
-async function MemorialPage({ params }: { params: { slug: string } }) {
+async function MemorialPage(props: { params: Params }) {
   const session = await authenticateUser();
-  const data = await getData(params);
+  const { slug } = await props.params;
+
+  const data = await getData(slug);
   if (!data) {
     redirect("/");
   }
