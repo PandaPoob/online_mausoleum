@@ -1,4 +1,3 @@
-"use server";
 //import { notFound } from "next/navigation";
 //import { Session } from "next-auth";
 //import { authenticateUser } from "@/app/utils/authSettings";
@@ -127,6 +126,7 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  "use server";
   console.log(params);
   /*   const session = await authenticateUser();
   const slug = (await params).slug;
