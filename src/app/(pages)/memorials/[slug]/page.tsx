@@ -123,7 +123,7 @@ async function getGoogleDriveData(session: Session, folderId: string) {
 
 async function MemorialPage({ params }: { params: Promise<{ slug: string }> }) {
   const session = await authenticateUser();
-  const { slug } = await params;
+  const slug = (await params).slug;
 
   const data = await getData(slug);
   if (!data) {
