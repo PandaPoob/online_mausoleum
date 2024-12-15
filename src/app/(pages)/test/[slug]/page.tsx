@@ -5,5 +5,5 @@ export default async function Page({
 }) {
   console.log(params);
 
-  return <div>test</div>;
+  return <div>test pls</div>;
 }
