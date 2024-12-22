@@ -1,22 +1,15 @@
 import Link from "next/link";
-import Image from "next/image";
-import logo from "../assets/icons/logo.png";
+import Logo from "../assets/icons/logo.svg";
 
 function BaseLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header>
-        <nav className="bg-white p-3 shadow-lg">
+        <nav className="bg-white p-3 drop-shadow-md">
           <ul className="flex items-center">
             <li>
               <Link href="/">
-                <Image
-                  src={logo}
-                  width={40}
-                  height={40}
-                  alt="Logo"
-                  priority={true}
-                />
+                <Logo />
               </Link>
             </li>
             <li className="ml-auto">
@@ -25,9 +18,7 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
           </ul>
         </nav>
       </header>
-      <main className="font-body bg-lightYellow min-h-screen w-full px-2 py-20">
-        {children}
-      </main>
+      <main className="font-body w-full">{children}</main>
     </>
   );
 }

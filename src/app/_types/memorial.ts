@@ -6,7 +6,7 @@ export interface IMemorial {
   born: string;
   died: string;
   burial: string;
-  imgUrl?: string;
+  imgUrl: string;
   theme: ITheme;
   folderId: string;
   photoSection?: IPhotoSection[];

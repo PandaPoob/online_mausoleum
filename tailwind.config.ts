@@ -20,11 +20,13 @@ export default {
       dark: "#3B0505",
       lightYellow: "#F0E4D4",
     },
-
     fontFamily: {
       primary: "var(--primary-font)",
       secondary: "var(--secondary-font)",
       body: "var(--body-font)",
+    },
+    backgroundImage: {
+      "basic-bg": "url('/images/basic_bg.png')",
     },
   },
   plugins: [],
