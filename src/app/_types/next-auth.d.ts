@@ -1,6 +1,7 @@
 import { User } from "next-auth";
 declare module "next-auth" {
   interface Session {
+    hasPermission: boolean;
     user: User & {
       id: string;
       email: string;

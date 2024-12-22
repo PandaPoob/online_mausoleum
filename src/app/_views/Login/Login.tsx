@@ -3,14 +3,19 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Google from "../../assets/icons/google.svg";
+import { useEffect } from "react";
 
 function Login() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  if (session) {
-    router.push("/memorials");
-  }
+  useEffect(() => {
+    if (session && !session?.hasPermission) {
+      router.push("/permission");
+    } else if (session && session.hasPermission) {
+      router.push("/memorials");
+    }
+  }, [session, router]);
 
   return (
     <section className="bg-basic-bg bg-cover bg-repeat-y min-h-screen">
@@ -26,7 +31,7 @@ function Login() {
           .
         </p>
         <button
-          onClick={() => signIn("google")}
+          onClick={() => signIn("google", { callbackUrl: "/memorials" })}
           className="flex items-center bg-[#4086F2] rounded-sm p-0.5 m-auto mt-10 hover:bg-opacity-80 transition-all duration-300"
         >
           <span className="bg-white p-2 rounded-sm">

@@ -1,6 +1,8 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
+const allowedEmails = process.env.ALLOWED_EMAILS?.split(",") || [];
+
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   session: {
@@ -23,6 +25,17 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user, account }) {
       if (user) {
+        if (!allowedEmails.includes(user.email!)) {
+          console.error(
+            "User does not have permission to access this resource",
+            user.email
+          );
+          token.hasPermission = false;
+          return token;
+        } else {
+          token.hasPermission = true;
+        }
+
         return {
           ...token,
           id: user.id,
@@ -35,6 +48,11 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
+      if (!token.hasPermission) {
+        session.hasPermission = false;
+        return session;
+      }
+
       return {
         ...session,
         user: {
@@ -51,6 +69,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/memorials",
+    signOut: "/login",
   },
 };
 
