@@ -1,4 +1,3 @@
-import Link from "next/link";
 import AboutAccordion from "./AboutAccordion";
 import RequestAccordion from "./RequestAccordion";
 
@@ -9,10 +8,6 @@ function Questions() {
         <h1 className="font-primary text-2xl md:text-4xl text-center mb-10">
           Spørgsmål & Svar
         </h1>
-
-        {/*         <h2>how to sign up? send email</h2>
-        <h2>how to upload images? request access</h2>
-        <h2>can i add another family member? yes</h2> */}
         <div className="bg-white p-10">
           <h2 className="font-primary font-bold text-md mb-6">Hjemmesiden</h2>
           <AboutAccordion />
