@@ -8,7 +8,7 @@ export async function authenticateUser() {
   const session = await getServerSession(authOptions);
   if (!session) {
     console.error("No session found");
-    redirect("/guide");
+    redirect("/login");
   }
 
   const userEmail = session.user?.email;

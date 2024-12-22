@@ -49,6 +49,9 @@ export const authOptions: NextAuthOptions = {
       };
     },
   },
+  pages: {
+    signIn: "/memorials",
+  },
 };
 
 export default NextAuth(authOptions);

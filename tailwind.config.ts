@@ -19,6 +19,7 @@ export default {
       white: "#FFFFFB",
       dark: "#3B0505",
       lightYellow: "#F0E4D4",
+      lightGrey: "#EBEBEB",
     },
     fontFamily: {
       primary: "var(--primary-font)",
